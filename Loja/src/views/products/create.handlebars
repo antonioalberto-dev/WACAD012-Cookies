@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <!-- Cabeçalho -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="fw-bold mb-1">
+            <i class="bi bi-plus-circle me-2"></i>Cadastro de Produto
+          </h2>
+          <p class="text-muted mb-0">Preencha os dados do novo produto</p>
+        </div>
+        <a href="/products" class="btn btn-outline-secondary">
+          <i class="bi bi-arrow-left me-2"></i>Voltar
+        </a>
+      </div>
+
+      <!-- Alerta de Erro -->
+      {{#if error}}
+      <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {{/if}}
+
+      <!-- Formulário -->
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <form action="/products/create" method="POST" enctype="multipart/form-data">
+            {{> fieldsProduct}}
+            
+            <!-- Botões de Ação -->
+            <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+              <a href="/products" class="btn btn-outline-secondary btn-lg">
+                <i class="bi bi-x-circle me-2"></i>Cancelar
+              </a>
+              <button class="btn btn-success btn-lg px-5" type="submit">
+                <i class="bi bi-check-circle me-2"></i>Cadastrar Produto
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Dicas -->
+      <div class="card mt-4 border-0 bg-light">
+        <div class="card-body">
+          <h6 class="fw-semibold mb-3">
+            <i class="bi bi-lightbulb me-2"></i>Dicas para um bom cadastro
+          </h6>
+          <ul class="mb-0 small text-muted">
+            <li>Use um nome claro e descritivo para o produto</li>
+            <li>Adicione uma descrição detalhada para atrair compradores</li>
+            <li>Certifique-se de que a imagem seja de boa qualidade</li>
+            <li>Mantenha o estoque sempre atualizado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

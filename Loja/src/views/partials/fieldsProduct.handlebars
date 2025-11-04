@@ -1,0 +1,79 @@
+<div class="row">
+  <!-- Nome do Produto -->
+  <div class="col-12 mb-3">
+    <label for="name" class="form-label fw-semibold">
+      <i class="bi bi-tag me-2"></i>Nome do Produto <span class="text-danger">*</span>
+    </label>
+    <input type="text" class="form-control form-control-lg {{#if errors.name}}is-invalid{{/if}}" 
+      id="name" name="name" placeholder="Ex: Processador Intel Core i7" value="{{product.name}}" required>
+    <div class="invalid-feedback">
+      <i class="bi bi-exclamation-circle me-1"></i>{{errors.name}}
+    </div>
+  </div>
+
+  <!-- Preço e Estoque -->
+  <div class="col-md-6 mb-3">
+    <label for="price" class="form-label fw-semibold">
+      <i class="bi bi-currency-dollar me-2"></i>Preço (R$) <span class="text-danger">*</span>
+    </label>
+    <div class="input-group input-group-lg {{#if errors.price}}is-invalid{{/if}}">
+      <span class="input-group-text">R$</span>
+      <input type="number" class="form-control {{#if errors.price}}is-invalid{{/if}}" 
+        id="price" name="price" step="0.01" min="0" placeholder="0,00" value="{{product.price}}" required>
+    </div>
+    <div class="invalid-feedback d-block">
+      <i class="bi bi-exclamation-circle me-1"></i>{{errors.price}}
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <label for="stock" class="form-label fw-semibold">
+      <i class="bi bi-box-seam me-2"></i>Quantidade em Estoque <span class="text-danger">*</span>
+    </label>
+    <input type="number" class="form-control form-control-lg {{#if errors.stock}}is-invalid{{/if}}" 
+      id="stock" name="stock" min="0" placeholder="0" value="{{product.stock}}" required>
+    <div class="invalid-feedback">
+      <i class="bi bi-exclamation-circle me-1"></i>{{errors.stock}}
+    </div>
+  </div>
+
+  <!-- Descrição -->
+  <div class="col-12 mb-3">
+    <label for="description" class="form-label fw-semibold">
+      <i class="bi bi-text-paragraph me-2"></i>Descrição do Produto <span class="text-danger">*</span>
+    </label>
+    <textarea class="form-control {{#if errors.description}}is-invalid{{/if}}" 
+      id="description" name="description" rows="5" 
+      placeholder="Descreva as características e benefícios do produto..." required>{{product.description}}</textarea>
+    <div class="form-text">
+      <i class="bi bi-info-circle me-1"></i>
+      Uma boa descrição ajuda os clientes a entender melhor o produto
+    </div>
+    <div class="invalid-feedback">
+      <i class="bi bi-exclamation-circle me-1"></i>{{errors.description}}
+    </div>
+  </div>
+
+  <!-- Upload de Imagem -->
+  <div class="col-12 mb-3">
+    <label for="image" class="form-label fw-semibold">
+      <i class="bi bi-image me-2"></i>Imagem do Produto
+    </label>
+    <input type="file" class="form-control form-control-lg {{#if errors.image}}is-invalid{{/if}}" 
+      id="image" name="image" accept="image/*">
+    <div class="form-text">
+      <i class="bi bi-info-circle me-1"></i>
+      Formatos aceitos: JPG, PNG, GIF (máx. 5MB) - Use imagens de alta qualidade para melhor apresentação
+    </div>
+    <div class="invalid-feedback">
+      <i class="bi bi-exclamation-circle me-1"></i>{{errors.image}}
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-info border-0 d-flex align-items-center" role="alert">
+  <i class="bi bi-info-circle-fill fs-5 me-3"></i>
+  <div>
+    <strong>Atenção:</strong> Todos os campos marcados com <span class="text-danger">*</span> são obrigatórios.
+  </div>
+</div>

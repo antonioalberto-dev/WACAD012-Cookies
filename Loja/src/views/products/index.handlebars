@@ -1,0 +1,128 @@
+<div class="container-fluid">
+  <!-- Cabeçalho -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h2 class="fw-bold mb-1">
+            <i class="bi bi-shop me-2"></i>Nossos Produtos
+          </h2>
+          <p class="text-muted mb-0">Explore nosso catálogo completo</p>
+        </div>
+        <a href="/products/create" class="btn btn-success btn-lg shadow-sm">
+          <i class="bi bi-plus-circle me-2"></i>Novo Produto
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {{#if products.length}}
+  <!-- Grid de Produtos -->
+  <div class="row g-4">
+    {{#each products}}
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+      <div class="card h-100 shadow-sm border-0 product-card">
+        <!-- Badge de Estoque -->
+        {{#if (gt stock 0)}}
+        <div class="position-absolute top-0 end-0 m-3">
+          <span class="badge bg-success">
+            <i class="bi bi-check-circle me-1"></i>Em Estoque
+          </span>
+        </div>
+        {{else}}
+        <div class="position-absolute top-0 end-0 m-3">
+          <span class="badge bg-danger">
+            <i class="bi bi-x-circle me-1"></i>Esgotado
+          </span>
+        </div>
+        {{/if}}
+
+        <!-- Imagem do Produto -->
+        <div class="card-img-wrapper p-4 bg-light">
+          <img src="/{{image}}" alt="{{name}}" class="card-img-top product-image"
+            style="height: 220px; object-fit: contain;" />
+        </div>
+
+        <!-- Corpo do Card -->
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title mb-2 text-truncate" title="{{name}}">{{name}}</h5>
+          
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">
+                <i class="bi bi-box-seam me-1"></i>Estoque
+              </span>
+              <span class="fw-semibold">{{stock}} unidades</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">
+                <i class="bi bi-tag me-1"></i>Preço
+              </span>
+              <span class="text-primary fw-bold fs-5">R$ {{formatPrice price}}</span>
+            </div>
+          </div>
+
+          <!-- Botões de Ação -->
+          <div class="mt-auto">
+            <a href="/products/read/{{id}}" class="btn btn-primary w-100 mb-2">
+              <i class="bi bi-eye me-2"></i>Ver Detalhes
+            </a>
+            <div class="d-flex gap-2">
+              <a href="/products/update/{{id}}" class="btn btn-outline-warning flex-fill">
+                <i class="bi bi-pencil"></i>
+              </a>
+              <button class="btn btn-outline-danger flex-fill" data-bs-toggle="modal" data-bs-target="#removeModal{{id}}">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Remoção -->
+    <div class="modal fade" id="removeModal{{id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="removeModalLabel{{id}}" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title" id="removeModalLabel{{id}}">
+              <i class="bi bi-exclamation-triangle me-2"></i>Confirmar Exclusão
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-0">Deseja realmente remover o produto <strong>{{name}}</strong>?</p>
+            <p class="text-muted small mt-2 mb-0">Esta ação não poderá ser desfeita.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              <i class="bi bi-x-circle me-2"></i>Cancelar
+            </button>
+            <button onclick="removeProduct('{{id}}')" type="button" class="btn btn-danger">
+              <i class="bi bi-trash me-2"></i>Sim, Remover
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{else}}
+  <!-- Estado Vazio -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow-sm border-0 text-center py-5">
+        <div class="card-body">
+          <i class="bi bi-inbox display-1 text-muted mb-4"></i>
+          <h3 class="mb-3">Nenhum produto cadastrado</h3>
+          <p class="text-muted mb-4">Comece adicionando seu primeiro produto ao catálogo</p>
+          <a href="/products/create" class="btn btn-success btn-lg">
+            <i class="bi bi-plus-circle me-2"></i>Cadastrar Produto
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+</div>
