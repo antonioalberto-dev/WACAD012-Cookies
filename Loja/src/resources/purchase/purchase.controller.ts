@@ -3,7 +3,12 @@ import { findItemsFromPurchaseCart } from "./purchase.service";
 
 const cart = async (req: Request, res: Response) => {
   try {
-    const cart = await findItemsFromPurchaseCart();
+    const guestPurchaseId = req.session.guestPurchaseId;
+    if (!guestPurchaseId) {
+      return res.status(400).json({ msg: 'Sessão inválida' });
+    }
+
+    const cart = await findItemsFromPurchaseCart(guestPurchaseId);
     if (!cart) throw new Error('Carrinho de compras não existe');
 
     const totalPrice = cart.items.reduce((total, item) => 

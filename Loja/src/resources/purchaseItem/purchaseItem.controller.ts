@@ -15,13 +15,18 @@ const add = async (req: Request, res: Response) => {
     return res.status(400).json({ msg: 'quantidade inválida' });
   }
 
+  const guestPurchaseId = req.session.guestPurchaseId;
+  if (!guestPurchaseId) {
+    return res.status(400).json({ msg: 'Sessão inválida' });
+  }
+
   const purchaseItem = {
     productId: productId,
     quantity: quantity
   } as AddItemToPurchaseCartDTO;
 
   try {
-    const purchaseCart = await findOrCreatePurchaseCart();
+    const purchaseCart = await findOrCreatePurchaseCart(guestPurchaseId);
     await addItemToPurchaseCart(purchaseItem, purchaseCart);
     res.redirect('/products');
   } catch (error) {

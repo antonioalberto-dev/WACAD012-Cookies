@@ -7,6 +7,7 @@ export function getEnv() {
   return cleanEnv(process.env, {
     PORT: port({default: 3032}),
     APP_NAME: str({default: 'ExpressTS App'}),
-    LOGGER_DIR: str({default: 'logs'}), 
+    LOGGER_DIR: str({default: 'logs'}),
+    SESSION_SECRET: str({default: 'my-secret-key-change-in-production'}),
   });
 }
