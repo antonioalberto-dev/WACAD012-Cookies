@@ -1,5 +1,285 @@
-h1 {
-  color: green;
+html[data-theme="light"] {
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --card-bg: #ffffff;
+  --navbar-bg: #0d6efd;
+  --link-color: #0d6efd;
+  --border-color: #dee2e6;
+}
+
+html[data-theme="dark"] {
+  --bg-color: #212529;
+  --text-color: #f8f9fa;
+  --card-bg: #343a40;
+  --navbar-bg: #1a1d20;
+  --link-color: #4dabf7;
+  --border-color: #495057;
+}
+
+ body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.navbar {
+  background-color: var(--navbar-bg) !important;
+}
+
+html[data-theme="dark"] .dropdown-menu {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .dropdown-item {
+  color: var(--text-color);
+}
+
+html[data-theme="dark"] .dropdown-item:hover {
+  background-color: #495057;
+}
+
+html[data-theme="dark"] .breadcrumb-item a {
+  color: var(--link-color);
+}
+
+html[data-theme="dark"] .form-control,
+html[data-theme="dark"] .form-select {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .modal-content {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+html[data-theme="dark"] .modal-header,
+html[data-theme="dark"] .modal-footer {
+  border-color: var(--border-color);
+}
+
+/* Correções adicionais para tema dark */
+html[data-theme="dark"] .card-title,
+html[data-theme="dark"] .card-text,
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] p,
+html[data-theme="dark"] span,
+html[data-theme="dark"] label,
+html[data-theme="dark"] .text-muted {
+  color: var(--text-color) !important;
+}
+
+html[data-theme="dark"] .text-muted {
+  color: #adb5bd !important;
+}
+
+html[data-theme="dark"] .badge {
+  background-color: #198754;
+  color: white;
+}
+
+html[data-theme="dark"] .btn-outline-primary {
+  color: var(--link-color);
+  border-color: var(--link-color);
+}
+
+html[data-theme="dark"] .btn-outline-primary:hover {
+  background-color: var(--link-color);
+  color: white;
+}
+
+html[data-theme="dark"] .btn-outline-danger {
+  color: #f87171;
+  border-color: #f87171;
+}
+
+html[data-theme="dark"] .btn-outline-danger:hover {
+  background-color: #f87171;
+  color: white;
+}
+
+html[data-theme="dark"] .card-img-wrapper {
+  background-color: #495057 !important;
+}
+
+html[data-theme="dark"] .product-card:hover .card-img-wrapper {
+  background-color: #5a6268 !important;
+}
+
+html[data-theme="dark"] a:not(.btn):not(.nav-link):not(.navbar-brand) {
+  color: var(--link-color);
+}
+
+html[data-theme="dark"] .bi-cart-x,
+html[data-theme="dark"] .bi-inbox {
+  color: #6c757d;
+}
+
+html[data-theme="dark"] .alert {
+  background-color: #495057;
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .breadcrumb-item.active {
+  color: #adb5bd;
+}
+
+html[data-theme="dark"] .btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: white;
+}
+
+html[data-theme="dark"] .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+html[data-theme="dark"] .btn-success {
+  background-color: #198754;
+  border-color: #198754;
+  color: white;
+}
+
+html[data-theme="dark"] .btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #212529;
+}
+
+html[data-theme="dark"] .btn-light {
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+  color: #212529;
+}
+
+html[data-theme="dark"] .text-primary {
+  color: #4dabf7 !important;
+}
+
+html[data-theme="dark"] .text-success {
+  color: #51cf66 !important;
+}
+
+html[data-theme="dark"] .text-danger {
+  color: #ff6b6b !important;
+}
+
+html[data-theme="dark"] .text-warning {
+  color: #ffd43b !important;
+}
+
+html[data-theme="dark"] input[type="number"],
+html[data-theme="dark"] input[type="text"],
+html[data-theme="dark"] textarea {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+  color: #6c757d;
+}
+
+html[data-theme="dark"] .form-label,
+html[data-theme="dark"] .form-text {
+  color: var(--text-color) !important;
+}
+
+html[data-theme="dark"] .form-text {
+  color: #adb5bd !important;
+}
+
+html[data-theme="dark"] .input-group-text {
+  background-color: #495057;
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+html[data-theme="dark"] .is-invalid {
+  border-color: #dc3545 !important;
+}
+
+html[data-theme="dark"] .invalid-feedback {
+  color: #ff6b6b;
+}
+
+html[data-theme="dark"] .alert-info {
+  background-color: #1e4d7b;
+  color: #e3f2fd;
+  border-color: #1e4d7b;
+}
+
+html[data-theme="dark"] .alert-danger {
+  background-color: #7a1e1e;
+  color: #ffcdd2;
+  border-color: #7a1e1e;
+}
+
+html[data-theme="dark"] .alert-success {
+  background-color: #1e4620;
+  color: #c8e6c9;
+  border-color: #1e4620;
+}
+
+html[data-theme="dark"] .alert-warning {
+  background-color: #664d03;
+  color: #fff3cd;
+  border-color: #664d03;
+}
+
+html[data-theme="dark"] .btn-outline-secondary {
+  color: #adb5bd;
+  border-color: #6c757d;
+}
+
+html[data-theme="dark"] .btn-outline-secondary:hover {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+html[data-theme="dark"] .border-top {
+  border-color: var(--border-color) !important;
+}
+
+html[data-theme="dark"] .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+html[data-theme="dark"] i.bi {
+  color: inherit;
+}
+
+html[data-theme="dark"] .fw-semibold,
+html[data-theme="dark"] .fw-bold {
+  color: var(--text-color);
+}
+
+html[data-theme="dark"] .card-body {
+  color: var(--text-color);
+}
+
+html[data-theme="dark"] strong {
+  color: var(--text-color);
 }
 
 .img-product {
@@ -14,7 +294,7 @@ h1 {
 }
 
 a {
-  color: black;
+  color: var(--link-color);
 }
 
 .navbar {
@@ -81,8 +361,12 @@ a {
   transform: translateX(5px);
 }
 
+html[data-theme="dark"] .dropdown-item:hover {
+  background-color: #495057;
+}
+
 body {
-  background-color: #f8f9fa;
+  background-color: var(--bg-color);
 }
 
 main {

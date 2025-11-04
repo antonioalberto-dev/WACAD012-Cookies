@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { getEnv } from './utils/validateEnv';
 import methodOverride from 'method-override';
+import cookieParser from 'cookie-parser';
 
 import logger from './middlewares/logger';
 import router from './routes';
@@ -24,6 +25,7 @@ app.set('view engine', 'handlebars');
 app.set('views', `${process.cwd()}/src/views`);
 
 app.use(logger(LogTipos.COMPLETO));
+app.use(cookieParser());
 app.use("/js", express.static(`${process.cwd()}/public/js`));
 app.use("/css", express.static(`${process.cwd()}/public/css`));
 app.use("/img", express.static(`${process.cwd()}/public/img`));
@@ -43,6 +45,12 @@ app.use(fileUpload({
   abortOnLimit: true,
   responseOnLimit: "Arquivo muito grande"
 }));
+
+app.use((req, res, next) => {
+  const theme = req.cookies.theme || 'light';
+  res.locals.theme = theme;
+  next();
+});
 
 app.use(router);
 

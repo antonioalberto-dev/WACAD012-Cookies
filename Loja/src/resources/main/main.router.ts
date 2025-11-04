@@ -4,6 +4,7 @@ import mainController from "./main.controller";
 const router = Router();
 
 router.get('/', mainController.index);
+router.get('/theme/:theme', mainController.setTheme);
 router.get('/hb1', mainController.hb1);
 router.get('/hb2', mainController.hb2);
 router.get('/hb3', mainController.hb3);

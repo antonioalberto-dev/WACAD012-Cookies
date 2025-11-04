@@ -4,6 +4,17 @@ const index = (req: Request, res: Response) => {
   res.redirect('/products');
 }
 
+const setTheme = (req: Request, res: Response) => {
+  const { theme } = req.params;
+  
+  if (theme === 'light' || theme === 'dark') {
+    res.cookie('theme', theme, { maxAge: 365 * 24 * 60 * 60 * 1000 }); // Cookie válido por 1 ano
+  }
+  
+  const referer = req.get('Referer') || '/products';
+  res.redirect(referer);
+}
+
 const hb1 = (req: Request, res: Response) => {
   res.render('main/hb1', { message: 'Express + Handlebars!' });
 }
@@ -33,4 +44,4 @@ const hb4 = (req: Request, res: Response) => {
   res.render('main/hb4', { techs });
 }
 
-export default { hb1, hb2, hb3, hb4, index };
+export default { hb1, hb2, hb3, hb4, index, setTheme };
