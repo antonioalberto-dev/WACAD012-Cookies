@@ -53,3 +53,15 @@ O servidor estará disponível em: http://localhost:3333
 
 - `PORT`: Porta do servidor (padrão: 3000)
 - `APP_NAME`: Nome da aplicação (padrão: 'APP')
+
+## Usuários disponíveis para teste:
+
+#### Administrador
+- **Email**: admin@webacademy.com
+- **Senha**: senha123
+- **Permissões**: Pode criar, editar e excluir produtos
+
+#### Cliente
+- **Email**: cliente@webacademy.com
+- **Senha**: senha123
+- **Permissões**: Pode apenas visualizar produtos e fazer compras

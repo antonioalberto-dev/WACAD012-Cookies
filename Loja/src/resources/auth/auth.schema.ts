@@ -45,4 +45,25 @@ const signupSchema = Joi.object({
     })
 });
 
+export const loginSchema = Joi.object({
+  email: Joi.string()
+    .email()
+    .max(100)
+    .required()
+    .messages({
+      "string.base": "Email deve ser um texto",
+      "string.empty": "Email é obrigatório",
+      "string.email": "Email deve ser válido",
+      "string.max": "Email deve ter no máximo 100 caracteres",
+      "any.required": "Email é obrigatório"
+    }),
+  password: Joi.string()
+    .required()
+    .messages({
+      "string.base": "Senha deve ser um texto",
+      "string.empty": "Senha é obrigatória",
+      "any.required": "Senha é obrigatória"
+    })
+});
+
 export default signupSchema;

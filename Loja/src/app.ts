@@ -9,6 +9,7 @@ import logger from './middlewares/logger';
 import router from './routes';
 import LogTipos from './middlewares/logTypes';
 import setGuestPurchaseId from './middlewares/setGuestPurchaseId';
+import setUserLocals from './middlewares/setUserLocals';
 
 import { engine } from 'express-handlebars';
 
@@ -65,6 +66,7 @@ app.use((req, res, next) => {
 });
 
 app.use(setGuestPurchaseId);
+app.use(setUserLocals);
 
 app.use(router);
 
