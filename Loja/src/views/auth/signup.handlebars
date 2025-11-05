@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="text-center mb-4">
+        <h2 class="fw-bold mb-1">
+          Criação de conta
+        </h2>
+        <p class="text-muted mb-0">Preencha os dados para criar sua conta</p>
+      </div>
+
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <form action="/signup" method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label fw-semibold">Seu nome</label>
+              <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" name="name"
+                placeholder="João da Silva" value="{{formData.name}}" required />
+              {{#if errors.name}}
+              <div class="invalid-feedback">
+                {{errors.name}}
+              </div>
+              {{/if}}
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label fw-semibold">Seu email</label>
+              <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email"
+                placeholder="joao@example.com" value="{{formData.email}}" required />
+              {{#if errors.email}}
+              <div class="invalid-feedback">
+                {{errors.email}}
+              </div>
+              {{/if}}
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label fw-semibold">Sua senha</label>
+              <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password"
+                name="password" placeholder="••••••••" required />
+              {{#if errors.password}}
+              <div class="invalid-feedback">
+                {{errors.password}}
+              </div>
+              {{/if}}
+            </div>
+
+            <div class="mb-4">
+              <label for="confirmPassword" class="form-label fw-semibold">Repita a sua senha</label>
+              <input type="password" class="form-control {{#if errors.confirmPassword}}is-invalid{{/if}}"
+                id="confirmPassword" name="confirmPassword" placeholder="••••••••" required />
+              {{#if errors.confirmPassword}}
+              <div class="invalid-feedback">
+                {{errors.confirmPassword}}
+              </div>
+              {{/if}}
+            </div>
+
+            <div class="d-grid">
+              <button class="btn btn-primary btn-lg" type="submit">
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
