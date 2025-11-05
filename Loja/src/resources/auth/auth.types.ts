@@ -4,3 +4,8 @@ export type SignupDto = {
   password: string;
   confirmPassword: string;
 };
+
+export type LoginDto = {
+  email: string;
+  password: string;
+};

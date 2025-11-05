@@ -1,9 +1,10 @@
 import { Router } from "express";
 import mainController from "./main.controller";
+import isAuthenticated from "../../middlewares/isAuthenticated";
 
 const router = Router();
 
-router.get('/', mainController.index);
+router.get('/', isAuthenticated, mainController.index);
 router.get('/theme/:theme', mainController.setTheme);
 router.get('/hb1', mainController.hb1);
 router.get('/hb2', mainController.hb2);

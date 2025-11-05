@@ -1,5 +1,4 @@
 <div class="container-fluid">
-  <!-- Cabeçalho -->
   <div class="row mb-4">
     <div class="col-12">
       <div class="d-flex justify-content-between align-items-center">
@@ -9,20 +8,20 @@
           </h2>
           <p class="text-muted mb-0">Explore nosso catálogo completo</p>
         </div>
+        {{#if isAdmin}}
         <a href="/products/create" class="btn btn-success btn-lg shadow-sm">
           <i class="bi bi-plus-circle me-2"></i>Novo Produto
         </a>
+        {{/if}}
       </div>
     </div>
   </div>
 
   {{#if products.length}}
-  <!-- Grid de Produtos -->
   <div class="row g-4">
     {{#each products}}
     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
       <div class="card h-100 shadow-sm border-0 product-card">
-        <!-- Badge de Estoque -->
         {{#if (gt stock 0)}}
         <div class="position-absolute top-0 end-0 m-3">
           <span class="badge bg-success">
@@ -37,13 +36,10 @@
         </div>
         {{/if}}
 
-        <!-- Imagem do Produto -->
         <div class="card-img-wrapper p-4 bg-light">
           <img src="/{{image}}" alt="{{name}}" class="card-img-top product-image"
             style="height: 220px; object-fit: contain;" />
         </div>
-
-        <!-- Corpo do Card -->
         <div class="card-body d-flex flex-column">
           <h5 class="card-title mb-2 text-truncate" title="{{name}}">{{name}}</h5>
           
@@ -62,11 +58,11 @@
             </div>
           </div>
 
-          <!-- Botões de Ação -->
           <div class="mt-auto">
             <a href="/products/read/{{id}}" class="btn btn-primary w-100 mb-2">
               <i class="bi bi-eye me-2"></i>Ver Detalhes
             </a>
+            {{#if ../isAdmin}}
             <div class="d-flex gap-2">
               <a href="/products/update/{{id}}" class="btn btn-outline-warning flex-fill">
                 <i class="bi bi-pencil"></i>
@@ -75,12 +71,12 @@
                 <i class="bi bi-trash"></i>
               </button>
             </div>
+            {{/if}}
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Modal de Remoção -->
     <div class="modal fade" id="removeModal{{id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
       aria-labelledby="removeModalLabel{{id}}" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -109,7 +105,6 @@
     {{/each}}
   </div>
   {{else}}
-  <!-- Estado Vazio -->
   <div class="row">
     <div class="col-12">
       <div class="card shadow-sm border-0 text-center py-5">
@@ -117,9 +112,11 @@
           <i class="bi bi-inbox display-1 text-muted mb-4"></i>
           <h3 class="mb-3">Nenhum produto cadastrado</h3>
           <p class="text-muted mb-4">Comece adicionando seu primeiro produto ao catálogo</p>
+          {{#if isAdmin}}
           <a href="/products/create" class="btn btn-success btn-lg">
             <i class="bi bi-plus-circle me-2"></i>Cadastrar Produto
           </a>
+          {{/if}}
         </div>
       </div>
     </div>

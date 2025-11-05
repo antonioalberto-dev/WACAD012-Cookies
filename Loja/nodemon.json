@@ -2,7 +2,7 @@
   "watch": ["src/**/*"],
   "ext": "ts,js,json",
   "ignore": ["src/**/*.spec.ts", "src/**/*.test.ts", "node_modules"],
-  "exec": "npm run build && node build/app.js",
+  "exec": "npm run seed && npm run build && node build/app.js",
   "env": {
     "NODE_ENV": "development"
   },
